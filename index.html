@@ -23,7 +23,7 @@
     <div class="clearfix">
         <div class="left" ng-hide="countNumberFacts()">
             <fieldset class="providers" ng-hide="countNumberFacts()">
-                <legend>Facts About Numbres </legend>
+                <legend>Facts About Numbers : </legend>
                 <table>
                     <thead>
                         <tr class="center">
@@ -55,7 +55,7 @@
             </div>
             <div class="right" ng-hide="existsFavorite()">
                 <fieldset class="">
-                    <legend>Favorite Numbres </legend>
+                    <legend>Favorite Numbers: </legend>
                     <div class="Favorites right" id="favoriteItem" ng-repeat="fav in FavoritesNumbersChecked | filter: {Favorite:true}| orderBy : 'Digit'">
                         <span class="factFav">  ✔  </span><span class="FavNum"><digit-data data="fav"></digit-data> </span> <span class="factFav">  <fact-data data="fav"></fact-data data> </span> <br></br>
 
