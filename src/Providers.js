@@ -67,5 +67,5 @@
 
 })();
 
-var NumberOfApiRequests = 5;
+var NumberOfApiRequests = 50;
 var numbersFacts = new Array();
