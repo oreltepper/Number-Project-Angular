@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="stmsProject">
+
+<head>
+
+    <link href=" ./StyleSheets/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Coiny|Gochi+Hand|Neucha" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Suez+One" rel="stylesheet">
+    <title>stmsProject-Angular</title>
+</head>
+
+<body class="" ng-controller="DataListController as app">
+
+    <div class="container">
+        <div class="flex">
+            <div class="loader" ng-hide="!countNumberFacts()">
+            </div>
+        </div>
+        <div class="load-text" ng-hide="!countNumberFacts()">
+            Receiving data from server
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="left" ng-hide="countNumberFacts()">
+            <fieldset class="providers" ng-hide="countNumberFacts()">
+                <legend>Facts About Numbres </legend>
+                <table>
+                    <thead>
+                        <tr class="center">
+                            <th>Mark As Favorite</th>
+                            <th>Number</th>
+                            <th>Fact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="Numberitem in numbersFactsshow | orderBy : 'Digit' ">
+
+                            <td class="center" ng-class="{'selectNumber': Numberitem.Favorite==1}"><input type="checkbox" id="check" name="" value="" ng-model="Numberitem.Favorite" ng-change="setFavoriteInProvidersList(Numberitem.Favorite,Numberitem)"></td>
+                            <td class="center" id="numbertd" ng-class="{'selectNumber': Numberitem.Favorite==1}">
+                                <digit-data data="Numberitem"></digit-data>
+                            </td>
+                            <td ng-class="{'selectNumber': Numberitem.Favorite==1}">
+                                <fact-data data="Numberitem"></fact-data data>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </fieldset>
+        </div>
+
+        <div class="Favoritescontainer right" ng-controller="FavoriteController">
+            <div class="left"> <button type="button" name="button" ng-click="clearFavoritesFromDataList()" ng-hide="existsFavorite()" id="clearButton" style="vertical-align:middle">Clear The {{numOfFavorite()}} Favorite/s Fact/s That was Marked</button>
+            </div>
+            <div class="right" ng-hide="existsFavorite()">
+                <fieldset class="">
+                    <legend>Favorite Numbres </legend>
+                    <div class="Favorites right" id="favoriteItem" ng-repeat="fav in FavoritesNumbersChecked | filter: {Favorite:true}| orderBy : 'Digit'">
+                        <span class="factFav">  ✔  </span><span class="FavNum"><digit-data data="fav"></digit-data> </span> <span class="factFav">  <fact-data data="fav"></fact-data data> </span> <br></br>
+
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="./src/angular.min.js"></script>
+    <script type="text/javascript" src="./src/Providers.js"></script>
+    <script type="text/javascript" src="./src/Favorite.js"></script>
+    <script type="text/javascript" src="./src/DataDirectives.js"></script>
+
+
+</body>
+
+</html>
+
+</html>
